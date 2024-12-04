@@ -30,7 +30,6 @@
 #define GPIOD_BASE_ADDRESS           0x40020C00UL
 #define GPIOE_BASE_ADDRESS           0x40021000UL
 #define GPIOH_BASE_ADDRESS           0x40021C00UL
-
 #define RCC_BASE_ADDRESS             0x40023800UL
 
 /*****************  AHB2 Peripheral Base Addresses  *****************/
@@ -43,7 +42,8 @@
 
 
 /*****************  APB2 Peripheral Base Addresses  *****************/
-
+#define SYSCFG_BASE_ADDRESS          0x40013800UL
+#define  EXTI_BASE_ADDRESS           0x40013C00UL
 /******************  STD Types **************************************/
 typedef unsigned char 	        uint8_t;
 typedef signed char   	        sint8_t;
@@ -132,7 +132,7 @@ typedef struct{
 	volatile uint32_t Reserved4[24];
 	volatile uint32_t IABR[8];
 	volatile uint32_t Reserved5[56];
-	volatile uint8_t IPR[240];
+	volatile uint8_t  IPR[240];
 	volatile uint32_t Reserved6[580];
 	volatile uint32_t STIR;
 }NVIC_RegDef_t;
@@ -155,10 +155,25 @@ typedef struct{
 	volatile uint32_t BFAR;
 	volatile uint32_t AFSR;
 }SCB_RegDef_t;
-
+/******************  SYSCFG Register Definition Structure ***************/
+typedef struct{
+	volatile uint32_t MEMRMP;
+	volatile uint32_t PMC;
+	volatile uint32_t EXTICR[4];
+	volatile uint32_t Reserved[2];
+	volatile uint32_t CMPCR;
+}SYSCFG_RegDef_t;
+/******************  EXTI Register Definition Structure ***************/
+typedef struct{
+	volatile uint32_t IMR;
+	volatile uint32_t EMR;
+	volatile uint32_t RTSR;
+	volatile uint32_t FTSR;
+	volatile uint32_t SWIER;
+	volatile uint32_t PR;
+}EXTI_RegDef_t;
 /*****************  RCC Peripheral Definition  ***************************/
 #define RCC           ((volatile RCC_RegDef_t*)(RCC_BASE_ADDRESS))
-
 /*****************  GPIO Peripheral Definitions **************************/
 #define GPIOA         ((GPIO_RegDef_t*)GPIOA_BASE_ADDRESS)
 #define GPIOB         ((GPIO_RegDef_t*)GPIOB_BASE_ADDRESS)
@@ -172,6 +187,10 @@ typedef struct{
 #define NVIC          ((NVIC_RegDef_t*)NVIC_BASE_ADDRESS)
 /*****************  SCB Peripheral Definition ********************************/
 #define SCB           ((SCB_RegDef_t*)SCB_BASE_ADDRESS)
+/*****************  SYSCFG Peripheral Definition ********************************/
+#define SYSCFG        ((SYSCFG_RegDef_t*)SYSCFG_BASE_ADDRESS)
+/*****************  SYSCFG Peripheral Definition ********************************/
+#define EXTI          ((EXTI_RegDef_t*)EXTI_BASE_ADDRESS)
 
 
 #endif //STM32F401XX_H
