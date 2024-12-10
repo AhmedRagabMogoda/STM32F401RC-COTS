@@ -25,9 +25,6 @@ uint8_t UART_u8Init(UART_Config_t *Copy_UARTConfig)
 	uint8_t Local_u8ErrorState = OK;
 	if(Copy_UARTConfig!=NULL)
 	{
-		/* Enable USART */
-		USART[Copy_UARTConfig->UARTNumber]->CR1 &= ~(ENABLE_MASK << ENABLE_PIN_ACCESS);
-		USART[Copy_UARTConfig->UARTNumber]->CR1 |= (Copy_UARTConfig->UARTEnable << ENABLE_PIN_ACCESS);
 		/* Configure mode (TX/RX) */
 		USART[Copy_UARTConfig->UARTNumber]->CR1 &= ~(TX_RX_MASK << TX_RX_PIN_ACCESS);
 		USART[Copy_UARTConfig->UARTNumber]->CR1 |= (Copy_UARTConfig->Mode << TX_RX_PIN_ACCESS);
@@ -60,6 +57,9 @@ uint8_t UART_u8Init(UART_Config_t *Copy_UARTConfig)
 		else if(Copy_UARTConfig->OverSampling==OVERSAMPLING_8) {DIV_Fraction = (((Result%1000)*8)+500)/1000u;}
 		else {Local_u8ErrorState = NOT_OK;}
 		USART[Copy_UARTConfig->UARTNumber]->BRR = (DIV_Mantissa << DIV_MANTISSA_PIN_ACCESS) | (DIV_Fraction << DIV_FRACTION_PIN_ACCESS);
+		/* Enable USART */
+		USART[Copy_UARTConfig->UARTNumber]->CR1 &= ~(ENABLE_MASK << ENABLE_PIN_ACCESS);
+		USART[Copy_UARTConfig->UARTNumber]->CR1 |= (Copy_UARTConfig->UARTEnable << ENABLE_PIN_ACCESS);
 	}
 	else
 	{
