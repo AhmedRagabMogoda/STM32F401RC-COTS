@@ -42,12 +42,17 @@
 
 /*****************  APB1 Peripheral Base Addresses  *****************/
 #define USART2_BASE_ADDRESS          0x40004400UL
+#define SPI2_BASE_ADDRESS            0x40003800UL
+#define SPI3_BASE_ADDRESS            0x40003C00UL
 
 /*****************  APB2 Peripheral Base Addresses  *****************/
 #define SYSCFG_BASE_ADDRESS          0x40013800UL
 #define EXTI_BASE_ADDRESS            0x40013C00UL
 #define USART1_BASE_ADDRESS          0x40011000UL
 #define USART6_BASE_ADDRESS          0x40011400UL
+#define SPI1_BASE_ADDRESS            0x40013000UL
+#define SPI4_BASE_ADDRESS            0x40013400UL
+
 /******************  STD Types **************************************/
 typedef unsigned char 	        uint8_t;
 typedef signed char   	        int8_t;
@@ -204,6 +209,19 @@ typedef struct{
 	volatile uint32_t GTPR;
 }USART_RegDef_t;
 
+/******************  SPI Register Definition Structure ***************/
+typedef struct{
+	volatile uint32_t CR1;
+	volatile uint32_t CR2;
+	volatile uint32_t SR;
+	volatile uint32_t DR;
+	volatile uint32_t CRCPR;
+	volatile uint32_t RXCRCR;
+	volatile uint32_t TXCRCR;
+	volatile uint32_t I2SCFGR;
+	volatile uint32_t I2SPR;
+}SPI_RegDef_t;
+
 /*****************  RCC Peripheral Definition  ***************************/
 #define RCC           ((RCC_RegDef_t*)(RCC_BASE_ADDRESS))
 
@@ -239,5 +257,10 @@ typedef struct{
 #define USART2         ((USART_RegDef_t*)USART2_BASE_ADDRESS)
 #define USART6         ((USART_RegDef_t*)USART6_BASE_ADDRESS)
 
+/*****************  SPI Peripheral Definitions **************************/
+#define SPI1           ((SPI_RegDef_t*)SPI1_BASE_ADDRESS)
+#define SPI2           ((SPI_RegDef_t*)SPI2_BASE_ADDRESS)
+#define SPI3           ((SPI_RegDef_t*)SPI3_BASE_ADDRESS)
+#define SPI4           ((SPI_RegDef_t*)SPI4_BASE_ADDRESS)
 
 #endif //STM32F401XX_H
