@@ -41,20 +41,22 @@
 
 
 /*****************  APB1 Peripheral Base Addresses  *****************/
-
+#define USART2_BASE_ADDRESS          0x40004400UL
 
 /*****************  APB2 Peripheral Base Addresses  *****************/
 #define SYSCFG_BASE_ADDRESS          0x40013800UL
-#define  EXTI_BASE_ADDRESS           0x40013C00UL
+#define EXTI_BASE_ADDRESS            0x40013C00UL
+#define USART1_BASE_ADDRESS          0x40011000UL
+#define USART6_BASE_ADDRESS          0x40011400UL
 /******************  STD Types **************************************/
 typedef unsigned char 	        uint8_t;
-typedef signed char   	        sint8_t;
+typedef signed char   	        int8_t;
 typedef unsigned short	        uint16_t;
-typedef signed short 	        sint16_t;
+typedef signed short 	        int16_t;
 typedef unsigned long 	    	uint32_t;
-typedef signed long      		sint32_t;
+typedef signed long      		int32_t;
 typedef unsigned long long      uint64_t;
-typedef signed long long        sint64_t;
+typedef signed long long        int64_t;
 typedef float                   float32_t;
 typedef double                  double64_t;
 
@@ -191,6 +193,17 @@ typedef struct{
 	volatile DMA_Stream_RegDef_t STREAM[8];
 }DMA_RegDef_t;
 
+/******************  USART Register Definition Structure ***************/
+typedef struct{
+	volatile uint32_t SR;
+	volatile uint32_t DR;
+	volatile uint32_t BRR;
+	volatile uint32_t CR1;
+	volatile uint32_t CR2;
+	volatile uint32_t CR3;
+	volatile uint32_t GTPR;
+}USART_RegDef_t;
+
 /*****************  RCC Peripheral Definition  ***************************/
 #define RCC           ((RCC_RegDef_t*)(RCC_BASE_ADDRESS))
 
@@ -220,6 +233,11 @@ typedef struct{
 /*****************  DMA Peripheral Definition  ***************************/
 #define DMA1          ((DMA_RegDef_t*)(DMA1_BASE_ADDRESS))
 #define DMA2          ((DMA_RegDef_t*)(DMA2_BASE_ADDRESS))
+
+/*****************  USART Peripheral Definitions **************************/
+#define USART1         ((USART_RegDef_t*)USART1_BASE_ADDRESS)
+#define USART2         ((USART_RegDef_t*)USART2_BASE_ADDRESS)
+#define USART6         ((USART_RegDef_t*)USART6_BASE_ADDRESS)
 
 
 #endif //STM32F401XX_H
