@@ -112,7 +112,7 @@ uint8_t UART_u8Init(UART_Config_t *Copy_UARTConfig);
  * - NULL_PTR_ERR: Null pointer passed for configuration or data buffer.
  * - TIME_OUT: Operation timed out while waiting for TXE flag.
  */
-uint8_t UART_u8Send(UART_Config_t *Copy_UARTConfig,uint16_t *Data, uint32_t DataLength);
+uint8_t UART_u8Send(UART_Number_t Copy_UARTNumber,uint8_t *Data, uint32_t DataLength);
 
 /*
  * UART_u8Receive
@@ -131,7 +131,7 @@ uint8_t UART_u8Send(UART_Config_t *Copy_UARTConfig,uint16_t *Data, uint32_t Data
  * - NULL_PTR_ERR: Null pointer passed for configuration or data buffer.
  * - TIME_OUT: Operation timed out while waiting for RXNE flag.
  */
-uint8_t UART_u8Receive(UART_Config_t *Copy_UARTConfig,uint16_t *Data, uint32_t DataLength);
+uint8_t UART_u8Receive(UART_Number_t Copy_UARTNumber,uint16_t *Data, uint32_t DataLength);
 
 /**
  * @brief Enables DMA mode for USART transmission.
@@ -140,14 +140,11 @@ uint8_t UART_u8Receive(UART_Config_t *Copy_UARTConfig,uint16_t *Data, uint32_t D
  * of the specified USART peripheral. This configuration allows data transmission
  * to be handled by the DMA controller, reducing CPU load.
  *
- * @param Copy_UARTConfig Pointer to the UART configuration structure containing
- *                        the UART instance number.
+ * @param the UART instance number.
  *
- * @return uint8_t Error state:
- *         - OK (0): If successful.
- *         - NULL_PTR_ERR: If the configuration pointer is NULL.
+ * @return no
  */
-uint8_t UART_u8Send_DMA(UART_Config_t *Copy_UARTConfig);
+void UART_u8Send_DMA(UART_Number_t Copy_UARTNumber);
 
 /**
  * @brief Enables DMA mode for USART reception.
@@ -156,14 +153,11 @@ uint8_t UART_u8Send_DMA(UART_Config_t *Copy_UARTConfig);
  * of the specified USART peripheral. This configuration allows incoming data
  * to be handled by the DMA controller, reducing CPU overhead.
  *
- * @param Copy_UARTConfig Pointer to the UART configuration structure containing
- *                        the UART instance number.
+ * @param the UART instance number.
  *
- * @return uint8_t Error state:
- *         - OK (0): If successful.
- *         - NULL_PTR_ERR: If the configuration pointer is NULL.
+ * @return no
  */
-uint8_t UART_u8Receive_DMA(UART_Config_t *Copy_UARTConfig);
+void UART_u8Receive_DMA(UART_Number_t Copy_UARTNumber);
 
 
 
