@@ -8,8 +8,8 @@
 #ifndef GPIO_PRIVATE_H_
 #define GPIO_PRIVATE_H_
 
-
-#define GPIO_PERIPHERAL_NUM        6u   // Total GPIO peripherals
+#define RESERVED                   (void*)0
+#define GPIO_PERIPHERAL_NUM        8u   // Total GPIO peripherals
 #define MODER_MASK                 0b11 // Mask for MODER bits
 #define MODER_PIN_ACCESS           2u   // Bit width for MODER access
 
