@@ -21,16 +21,15 @@
 uint8_t LCD_u8Init(void)
 {
 	uint8_t Local_u8ErrorState=OK;
-	uint8_t PortNum[MAX_PORTNUM]={RCC_GPIOA,RCC_GPIOB,RCC_GPIOC,RCC_GPIOD,RCC_GPIOE,RCC_GPIOH};
 	SysTick_u8DelayMilliSecond(200);
 	/* Initialize control pins as output */
-	RCC_AHB1ENABLECLK(PortNum[PORT_CTRL]);
+	RCC_AHB1ENABLECLK(PORT_CTRL);
 	GPIO_U8PinInit(&(GPIO_PinConfig_t){.Port=PORT_CTRL, .PinNum=RS_PIN, .Mode=OUTPUT , .OutputType = PUSH_PULL});
 	GPIO_U8PinInit(&(GPIO_PinConfig_t){.Port=PORT_CTRL, .PinNum=RW_PIN, .Mode=OUTPUT , .OutputType = PUSH_PULL});
 	GPIO_U8PinInit(&(GPIO_PinConfig_t){.Port=PORT_CTRL, .PinNum=EN_PIN, .Mode=OUTPUT , .OutputType = PUSH_PULL});
 #ifdef EIGHT_BITS_MODE
 	uint8_t Count;
-	RCC_AHB1ENABLECLK(PortNum[PORT_DATA]);
+	RCC_AHB1ENABLECLK(PORT_DATA);
 	for(Count = PIN_START_DATA ; Count < (PIN_START_DATA+8) ; Count++)
 	{
 		GPIO_U8PinInit(&(GPIO_PinConfig_t){.Port=PORT_DATA, .PinNum=Count, .Mode=OUTPUT , .OutputType = PUSH_PULL});
@@ -45,7 +44,7 @@ uint8_t LCD_u8Init(void)
     SysTick_u8DelayMilliSecond(1);
 #elif defined FOUR_BITS_MODE
 	uint8_t Count;
-	RCC_AHB1ENABLECLK(PortNum[PORT_DATA]);
+	RCC_AHB1ENABLECLK(PORT_DATA);
 	for (Count = PIN_START_DATA; Count < (PIN_START_DATA + 4); Count++) {
 	    GPIO_U8PinInit(&(GPIO_PinConfig_t){.Port = PORT_DATA, .PinNum = Count, .Mode = OUTPUT , .OutputType = PUSH_PULL});
 	}

@@ -14,7 +14,7 @@
 
 /************************* Global Variable********************************/
 /* Array of pointers to GPIO peripheral base addresses */
-static GPIO_RegDef_t* GPIOPort[GPIO_PERIPHERAL_NUM]={GPIOA,GPIOB,GPIOC,GPIOD,GPIOE,GPIOH};
+static GPIO_RegDef_t* GPIOPort[GPIO_PERIPHERAL_NUM]={GPIOA,GPIOB,GPIOC,GPIOD,GPIOE,RESERVED,RESERVED,GPIOH};
 
 
 /************************  Implementation Function  **********************/
@@ -113,7 +113,7 @@ uint8_t GPIO_U8ReadPinVal(Port_t Port,Pin_t PinNum,PinVal_t *PinVal)
 	{
 		if((Port <= PORTH) && (PinNum <= PIN15))
 		{
-			*PinVal=( GPIOPort[Port]->IDR & (IDR_MASK << PinNum));
+			*PinVal=((GPIOPort[Port]->IDR >> PinNum) & IDR_MASK);
 		}
 		else
 		{

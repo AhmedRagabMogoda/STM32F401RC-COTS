@@ -14,7 +14,7 @@ typedef enum{
 	PORTC,
 	PORTD,
 	PORTE,
-	PORTH
+	PORTH=7
 }Port_t;
 
 typedef enum{

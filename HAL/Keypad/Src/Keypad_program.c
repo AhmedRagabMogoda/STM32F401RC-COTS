@@ -19,9 +19,8 @@
 void Keypad_VoidInit(void)
 {
 	uint8_t Count;
-	uint8_t PortNum[MAX_PORTNUM]={RCC_GPIOA,RCC_GPIOB,RCC_GPIOC,RCC_GPIOD,RCC_GPIOE,RCC_GPIOH};
-	RCC_AHB1ENABLECLK(PortNum[PORT_ROW]);
-	RCC_AHB1ENABLECLK(PortNum[PORT_COLUMN]);
+	RCC_AHB1ENABLECLK(PORT_ROW);
+	RCC_AHB1ENABLECLK(PORT_COLUMN);
 	for(Count = PIN_START_ROW ; Count < (PIN_START_ROW+ROWS) ; Count++)
 	{
 		GPIO_U8PinInit(&(GPIO_PinConfig_t){.Port=PORT_ROW, .PinNum=Count, .Mode=OUTPUT , .OutputType = PUSH_PULL});
