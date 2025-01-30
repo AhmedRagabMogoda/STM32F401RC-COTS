@@ -8,7 +8,6 @@
 #ifndef KEYPAD_PRIVATE_H_
 #define KEYPAD_PRIVATE_H_
 
-#define MAX_PORTNUM    6u
 #define ROWS           4u
 #define COLUMNS        4u
 

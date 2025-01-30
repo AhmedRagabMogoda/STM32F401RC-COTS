@@ -18,7 +18,6 @@
 #define FUNCTION_SET_FOUR_BITS   0x28  /* 4-bit mode, 2 lines, 5x7 dots */
 
 /************************* Configuration Macros ***********************/
-#define MAX_PORTNUM              6u
 #define ONE                      1u
 #define CLEAR                    0
 #define FIRST_ROW                1u
