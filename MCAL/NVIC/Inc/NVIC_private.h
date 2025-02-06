@@ -1,8 +1,8 @@
 /*
- * NVIC_private.h
+ *  NVIC_private.h
  *
  *  Created on: Nov 30, 2024
- *      Author: Ahmed Ragab
+ *  Author: Ahmed Ragab
  */
 
 #ifndef NVIC_PRIVATE_H_
@@ -18,8 +18,5 @@
 #define IPR_MASK                 0b1111
 #define IPR_PIN_ACCESS           4u
 
-#define  VECTKEY                 0X05FA
-#define  VECTKEY_PIN_ACCESS      16u
-#define  PRIGROUP_PIN_ACCESS     8u
 
 #endif /* NVIC_PRIVATE_H_ */

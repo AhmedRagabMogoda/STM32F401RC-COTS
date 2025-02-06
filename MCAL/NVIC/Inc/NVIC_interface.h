@@ -2,7 +2,7 @@
  * NVIC_interface.h
  *
  *  Created on: Nov 30, 2024
- *      Author: Ahmed Ragab
+ *  Author: Ahmed Ragab
  */
 
 #ifndef NVIC_INTERFACE_H_
@@ -76,13 +76,6 @@ typedef enum{
 	 ZERO,ONE,TWO,THREE,FOUR,FIVE
 }Priority_t;
 
-typedef enum{
-	 Group8_Sub2=4,
-	 Group4_Sub4,
-	 Group2_Sub8,
-	 NoneGroup_Sub16,
-}PriorityGroup_t;
-
 
 /*================================================================================================*/
 /**
@@ -147,30 +140,5 @@ uint8_t NVIC_GetActiveFlagInterrupt(Interrupt_t InterruptNum);
 **/
 void NVIC_SETPriorityInterrupt(Interrupt_t InterruptNum,Priority_t Priority);
 
-/**
- * @brief   Sets the priority grouping configuration for the Cortex-M processor.
- *          The priority grouping determines the number of priority bits allocated
- *          to the preemption priority and the number of bits allocated to the
- *          sub-priority in the interrupt system.
- *
- *          The priority grouping is configured via the **AIRCR** register of the
- *          **System Control Block (SCB)**. The function uses the **PriorityGroup_t**
- *          enum to specify the priority grouping configuration. This function
- *          enables adjusting how interrupts are prioritized.
- *
- * @param   PriorityGroup    The priority grouping configuration.
- *          This value is an enumeration defined by the user to select the
- *          appropriate priority group configuration. The valid values for
- *          this parameter are:
- *              - PriorityGroup_0: All bits for preemption priority.
- *              - PriorityGroup_1: 1 bit for sub-priority and the rest for preemption priority.
- *              - PriorityGroup_2: 2 bits for sub-priority and the rest for preemption priority.
- *              - PriorityGroup_3: 3 bits for sub-priority and the rest for preemption priority.
- *              - PriorityGroup_4: 4 bits for sub-priority and the rest for preemption priority.
- *              - etc. (depending on the implementation)
- *
- * @return  None
- **/
-void SCB_SetPriorityGroup(PriorityGroup_t PriorityGroup);
 
 #endif /* NVIC_INTERFACE_H_ */

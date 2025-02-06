@@ -49,8 +49,4 @@ void NVIC_SETPriorityInterrupt(Interrupt_t InterruptNum,Priority_t Priority)
 	NVIC->IPR[InterruptNum] = (Priority << IPR_PIN_ACCESS);
 }
 
-void SCB_SetPriorityGroup(PriorityGroup_t PriorityGroup)
-{
-	SCB->AIRCR =(VECTKEY << VECTKEY_PIN_ACCESS) | (PriorityGroup << PRIGROUP_PIN_ACCESS);
-}
 
