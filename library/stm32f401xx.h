@@ -242,10 +242,10 @@ typedef struct{
 /*****************  SCB Peripheral Definition ********************************/
 #define SCB           ((SCB_RegDef_t*)SCB_BASE_ADDRESS)
 
-/*****************  SYSCFG Peripheral Definition ********************************/
+/*****************  SYSCFG Peripheral Definition *************************/
 #define SYSCFG        ((SYSCFG_RegDef_t*)SYSCFG_BASE_ADDRESS)
 
-/*****************  SYSCFG Peripheral Definition ********************************/
+/*****************  SYSCFG Peripheral Definition *************************/
 #define EXTI          ((EXTI_RegDef_t*)EXTI_BASE_ADDRESS)
 
 /*****************  DMA Peripheral Definition  ***************************/
