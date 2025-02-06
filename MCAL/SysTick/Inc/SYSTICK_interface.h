@@ -8,6 +8,12 @@
 #ifndef SYSTICK_INTERFACE_H_
 #define SYSTICK_INTERFACE_H_
 
+/* Function: SysTick_voidInit
+ * Description: Initializes the SysTick timer to generate periodic interrupts at a specified frequency.
+ * Parameters: Copy_u32TickHZ - The desired tick frequency in Hertz.
+ * Return: None
+ */
+void SysTick_voidInit(uint32_t Copy_u32TickHZ);
 
 /**
  * @brief   Implements a millisecond delay using SysTick.
